@@ -229,6 +229,37 @@ Do not commit unless the user explicitly asks.
 
 ---
 
+## Academic Report (LaTeX)
+
+The academic report documents the config structs in French. Located in `report/`.
+
+### Build Commands
+
+- Build PDF: `make -C report`
+- Output: `report/build/main.pdf`
+
+### Adding New Widgets
+
+To add documentation for a new widget (e.g., `input`):
+
+1. Read the header: `include/widgets/input.h`
+
+2. Create `report/input.tex` with sections:
+   - Definition (struct code)
+   - Description des champs (table + descriptions)
+   - Exemple d'utilisation (code example)
+
+3. Add to `report/main.tex`:
+   ```
+   \input{input}
+   ```
+
+4. Build: `make -C report`
+
+
+
+---
+
 ## Agent Checklist
 
 Before coding:
