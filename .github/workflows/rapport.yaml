@@ -14,10 +14,17 @@
           with:            
             run: 
               |
-              cd report && make
+              make -C report
+              make -C report2
 
-        - name: Upload PDF
+        - name: Upload Report 1 (Structure)
           uses: actions/upload-artifact@v4
           with:
-            name: report
+            name: report1_structure
             path: report/main.pdf
+
+        - name: Upload Report 2 (Implementation)
+          uses: actions/upload-artifact@v4
+          with:
+            name: report2_implementation
+            path: report2/main.pdf
