@@ -99,24 +99,13 @@ GtkWidget *create_menu_panel(const menubar_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{g\_simple\_action\_new()} & Crée l'action logique associée à un item de menu. \\
-\hline
-\texttt{g\_action\_map\_add\_action()} & Enregistre l'action dans la carte fournie par l'application. \\
-\hline
-\texttt{g\_menu\_append\_submenu()} & Ajoute un sous-menu hiérarchique au modèle. \\
-\hline
-\texttt{g\_menu\_append\_section()} & Crée une section logique de menu. \\
-\hline
-\texttt{gtk\_popover\_menu\_bar\_new\_from\_model()} & Instancie la barre de menus GTK4 à partir du modèle. \\
-\hline
-\texttt{gtk\_popover\_menu\_new\_from\_model()} & Produit un panneau de menu pouvant être affiché dans un popover. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{g\_simple\_action\_new()}} : Crée un objet d'action élémentaire identifié par un nom unique. Le module l'utilise pour définir l'entité logique qui sera déclenchée lors de la sélection d'un item, assurant une séparation propre entre l'interface et le code métier.
+    \item \textbf{\texttt{g\_action\_map\_add\_action()}} : Enregistre une action dans la carte des actions de l'application ou de la fenêtre. Cette API permet au wrapper de rendre les items de menu fonctionnels en les rendant accessibles au système d'actions global de GTK.
+    \item \textbf{\texttt{g\_menu\_append\_submenu()}} : Ajoute une entrée de type sous-menu pointant vers un autre modèle de menu. Elle est la clé de la construction récursive utilisée dans le module pour gérer des structures de menus imbriquées de n'importe quelle profondeur.
+    \item \textbf{\texttt{g\_menu\_append\_section()}} : Permet de regrouper des items de menu dans une zone visuellement délimitée (souvent avec un titre). Le wrapper l'exploite pour organiser l'interface de manière hiérarchique et logique.
+    \item \textbf{\texttt{gtk\_popover\_menu\_bar\_new\_from\_model()}} : Génère une barre de menu complète en se basant sur la structure décrite dans un \texttt{GMenuModel}. C'est l'API principale pour transformer la configuration déclarative du wrapper en un widget de barre de menu GTK4.
+    \item \textbf{\texttt{gtk\_popover\_menu\_new\_from\_model()}} : Produit un widget de menu adapté à un affichage dans une fenêtre flottante (popover). Le module l'utilise pour offrir des menus contextuels ou des panneaux de contrôle compacts basés sur le même modèle que la barre de menu.
+\end{itemize}
 
 \newpage

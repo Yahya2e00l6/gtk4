@@ -34,24 +34,13 @@ GtkWidget *create_calendar(const calendar_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_calendar\_new()} & Crée l'instance du calendrier. \\
-\hline
-\texttt{gtk\_calendar\_set\_date()} & Positionne la date courante dans les versions récentes de GTK. \\
-\hline
-\texttt{gtk\_calendar\_select\_day()} & Assure la compatibilité avec les versions plus anciennes. \\
-\hline
-\texttt{gtk\_calendar\_set\_show\_week\_numbers()} & Active l'affichage du numéro de semaine. \\
-\hline
-\texttt{gtk\_calendar\_set\_show\_heading()} & Contrôle l'en-tête et la navigation mensuelle. \\
-\hline
-\texttt{g\_signal\_connect()} & Raccorde le signal de sélection de jour au callback. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_calendar\_new()}} : Instancie le composant de base du calendrier GTK4. Cette API initialise le widget permettant l'affichage et la sélection interactive de dates dans le module.
+    \item \textbf{\texttt{gtk\_calendar\_set\_date()}} : Positionne le calendrier sur une date précise (jour, mois, année) à l'aide d'un objet \texttt{GDateTime}. Disponible depuis GTK 4.20, elle est privilégiée pour définir l'état initial du widget selon la configuration.
+    \item \textbf{\texttt{gtk\_calendar\_select\_day()}} : Remplit le même rôle que l'API précédente mais pour les versions de GTK4 plus anciennes. Son utilisation dans le module garantit la portabilité du code sur différents environnements système.
+    \item \textbf{\texttt{gtk\_calendar\_set\_show\_week\_numbers()}} : Bascule l'affichage des colonnes de numérotation des semaines sur le côté gauche du widget. Elle est directement pilotée par le booléen \texttt{show\_week\_numbers} de la structure de configuration.
+    \item \textbf{\texttt{gtk\_calendar\_set\_show\_heading()}} : Contrôle la visibilité de la barre supérieure affichant le mois et l'année. Le wrapper s'en sert pour activer ou désactiver la navigation mensuelle directe par l'utilisateur.
+    \item \textbf{\texttt{g\_signal\_connect()}} : Attache un callback au signal \texttt{day-selected}. Cette connexion permet au wrapper de notifier le reste de l'application dès qu'une nouvelle date est cliquée sur le calendrier.
+\end{itemize}
 
 \newpage

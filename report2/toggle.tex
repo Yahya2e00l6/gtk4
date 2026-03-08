@@ -60,24 +60,13 @@ GtkWidget *create_switch_row(const switch_config *config, GtkWidget **out_switch
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_check\_button\_new\_with\_label()} & Crée la case à cocher avec son libellé. \\
-\hline
-\texttt{gtk\_check\_button\_set\_inconsistent()} & Active l'état visuel intermédiaire. \\
-\hline
-\texttt{gtk\_switch\_new()} & Crée l'interrupteur binaire GTK4. \\
-\hline
-\texttt{gtk\_switch\_set\_active()} & Positionne l'état logique initial du switch. \\
-\hline
-\texttt{gtk\_box\_append()} & Assemble le label et l'interrupteur dans une même ligne. \\
-\hline
-\texttt{g\_signal\_connect()} & Relie les changements d'état aux callbacks utilisateur. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_check\_button\_new\_with\_label()}} : Initialise une case à cocher associée à un texte descriptif. Le module l'utilise pour créer des contrôles de sélection binaire simples et lisibles.
+    \item \textbf{\texttt{gtk\_check\_button\_set\_inconsistent()}} : Permet de placer visuellement la case à cocher dans un état tiers, indiquant une sélection partielle ou indéterminée. Le wrapper expose cette fonctionnalité pour gérer des logiques de sélection complexes.
+    \item \textbf{\texttt{gtk\_switch\_new()}} : Instancie un widget d'interrupteur coulissant, typique des interfaces modernes. Elle est au cœur de la fonction \texttt{create\_switch\_row} pour proposer une interaction intuitive sur les écrans tactiles ou avec la souris.
+    \item \textbf{\texttt{gtk\_switch\_set\_active()}} : Modifie l'état booléen du switch sans déclencher de signaux de changement d'état. Le wrapper l'utilise pour appliquer l'état initial défini par le développeur lors de la création du widget.
+    \item \textbf{\texttt{gtk\_box\_append()}} : Insère un widget à la suite des autres dans un conteneur \texttt{GtkBox}. Dans le module, elle sert à construire dynamiquement la ligne composite regroupant le libellé et l'interrupteur.
+    \item \textbf{\texttt{g\_signal\_connect()}} : Raccorde les signaux de changement d'état (comme \texttt{notify::active} pour le switch) aux callbacks applicatifs. Elle assure la réactivité de l'application aux changements d'état opérés par l'utilisateur sur les contrôles de bascule.
+\end{itemize}
 
 \newpage

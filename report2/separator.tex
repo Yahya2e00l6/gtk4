@@ -16,14 +16,8 @@ GtkWidget *create_separator(const separator_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_separator\_new()} & Crée un séparateur horizontal ou vertical selon l'orientation demandée. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_separator\_new()}} : Instancie une ligne de séparation visuelle dont l'orientation (horizontale ou verticale) est définie à la création. Le module l'utilise pour fournir un moyen simple de segmenter l'interface graphique tout en appliquant le style commun du wrapper.
+\end{itemize}
 
 \newpage

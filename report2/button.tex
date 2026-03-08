@@ -71,24 +71,13 @@ GtkWidget *create_radio_button(const radio_button_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_button\_new\_with\_label()} & Crée un bouton texte simple. \\
-\hline
-\texttt{gtk\_button\_new\_with\_mnemonic()} & Active les raccourcis clavier fondés sur un underscore dans le label. \\
-\hline
-\texttt{gtk\_button\_set\_child()} & Remplace le contenu interne du bouton par un conteneur personnalisé. \\
-\hline
-\texttt{gtk\_image\_new\_from\_icon\_name()} & Construit l'icône à partir du thème courant. \\
-\hline
-\texttt{gtk\_check\_button\_set\_group()} & Regroupe plusieurs boutons en sélection exclusive. \\
-\hline
-\texttt{g\_signal\_connect()} & Connecte les signaux \texttt{clicked} et \texttt{toggled} aux callbacks fournis. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_button\_new\_with\_label()}} : Crée un nouveau widget bouton contenant un label texte. Dans le module, elle est utilisée pour instancier le bouton de base lorsque l'option \texttt{use\_underline} est désactivée, offrant une création simplifiée de boutons textuels standards.
+    \item \textbf{\texttt{gtk\_button\_new\_with\_mnemonic()}} : Crée un bouton dont le label contient un mnémonique (raccourci clavier) indiqué par un caractère souligné. Le wrapper y a recours lorsque \texttt{config->use\_underline} est vrai, facilitant ainsi l'accessibilité de l'interface au clavier.
+    \item \textbf{\texttt{gtk\_button\_set\_child()}} : Définit le widget enfant unique du bouton. Elle permet au wrapper d'injecter une \texttt{GtkBox} personnalisée contenant à la fois une icône et un texte, dépassant ainsi la limitation des boutons à simple label.
+    \item \textbf{\texttt{gtk\_image\_new\_from\_icon\_name()}} : Génère un widget d'image à partir du nom d'une icône présente dans le thème système. Elle est utilisée ici pour charger visuellement l'icône demandée dans la configuration avant son insertion dans le bouton.
+    \item \textbf{\texttt{gtk\_check\_button\_set\_group()}} : Lie un bouton de type case à cocher à un groupe existant pour obtenir un comportement de sélection exclusive. Dans \texttt{create\_radio\_button}, cette API transforme un \texttt{GtkCheckButton} standard en un bouton radio fonctionnel.
+    \item \textbf{\texttt{g\_signal\_connect()}} : Connecte une fonction de rappel à un signal spécifique d'un objet. Le module l'utilise pour brancher les signaux \texttt{clicked} (pour les boutons) et \texttt{toggled} (pour les radios) aux fonctions définies par le développeur applicatif.
+\end{itemize}
 
 \newpage

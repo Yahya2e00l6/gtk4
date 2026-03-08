@@ -105,24 +105,13 @@ GtkWidget *create_image(const image_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_progress\_bar\_set\_fraction()} & Positionne l'avancement sur une valeur normalisée. \\
-\hline
-\texttt{gtk\_progress\_bar\_pulse()} & Déclenche un avancement indéterminé ponctuel. \\
-\hline
-\texttt{gtk\_spinner\_start()} & Lance l'animation du spinner. \\
-\hline
-\texttt{gtk\_label\_set\_ellipsize()} & Contrôle la coupure des textes trop longs. \\
-\hline
-\texttt{gtk\_picture\_new\_for\_filename()} & Crée un widget d'image basé sur un fichier. \\
-\hline
-\texttt{gtk\_image\_new\_from\_icon\_name()} & Crée une icône issue du thème GTK. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_progress\_bar\_set\_fraction()}} : Définit la fraction de remplissage de la barre de progression, acceptant une valeur flottante entre 0.0 et 1.0. Elle est utilisée dans \texttt{create\_progress\_bar} pour initialiser le niveau d'avancement visuel.
+    \item \textbf{\texttt{gtk\_progress\_bar\_pulse()}} : Fait basculer la barre de progression en mode "activité indéterminée", déplaçant un bloc de manière cyclique. Le wrapper l'appelle pour indiquer que le programme est en cours de traitement sans pouvoir estimer le temps restant.
+    \item \textbf{\texttt{gtk\_spinner\_start()}} : Démarre l'animation de rotation du widget spinner. Le module l'utilise pour activer visuellement l'indicateur de chargement dès sa création si la configuration le spécifie.
+    \item \textbf{\texttt{gtk\_label\_set\_ellipsize()}} : Détermine le mode de troncature du texte (début, milieu ou fin) par des points de suspension lorsque l'espace est insuffisant. Elle permet au wrapper de garantir une mise en page propre même avec des labels imprévus.
+    \item \textbf{\texttt{gtk\_picture\_new\_for\_filename()}} : Crée un widget d'image haute performance à partir d'un fichier local. Contrairement à \texttt{GtkImage}, cette API utilisée par le module facilite le redimensionnement proportionnel des images chargées.
+    \item \textbf{\texttt{gtk\_image\_new\_from\_icon\_name()}} : Instancie un widget d'image affichant une icône issue du thème de l'utilisateur. Le wrapper l'exploite pour intégrer des symboles graphiques standards dans l'interface de manière simple et légère.
+\end{itemize}
 
 \newpage

@@ -93,24 +93,13 @@ void show_alert_dialog(const alert_dialog_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_alert\_dialog\_new()} & Crée le dialogue d'alerte GTK4. \\
-\hline
-\texttt{gtk\_alert\_dialog\_set\_buttons()} & Définit l'ensemble des boutons proposés à l'utilisateur. \\
-\hline
-\texttt{gtk\_alert\_dialog\_set\_default\_button()} & Choisit le bouton activé par défaut. \\
-\hline
-\texttt{gtk\_alert\_dialog\_choose()} & Lance l'affichage asynchrone avec callback de fin. \\
-\hline
-\texttt{gtk\_alert\_dialog\_choose\_finish()} & Récupère l'indice du bouton choisi dans le résultat asynchrone. \\
-\hline
-\texttt{gtk\_alert\_dialog\_show()} & Affiche le dialogue sans traitement de réponse personnalisé. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_alert\_dialog\_new()}} : Instancie un nouvel objet de dialogue d'alerte en acceptant une chaîne de format pour le message principal. Elle est systématiquement appelée au début de \texttt{show\_alert\_dialog} pour définir le cœur de l'information à transmettre.
+    \item \textbf{\texttt{gtk\_alert\_dialog\_set\_buttons()}} : Assigne un tableau de libellés aux boutons qui seront présentés à l'utilisateur. Le wrapper convertit sa liste interne de structures de boutons vers ce format simple attendu par GTK4.
+    \item \textbf{\texttt{gtk\_alert\_dialog\_set\_default\_button()}} : Désigne l'indice du bouton qui doit répondre à l'activation par défaut (touche Entrée). Cela permet d'améliorer l'ergonomie en mettant en avant l'action la plus probable ou la plus sûre.
+    \item \textbf{\texttt{gtk\_alert\_dialog\_choose()}} : Lance l'affichage du dialogue de manière non bloquante et enregistre un callback pour le futur. Elle est essentielle pour le fonctionnement asynchrone du wrapper, permettant à l'application de continuer à tourner pendant que le dialogue est ouvert.
+    \item \textbf{\texttt{gtk\_alert\_dialog\_choose\_finish()}} : Extrait le résultat de l'interaction (l'indice du bouton cliqué) à partir de l'objet de résultat asynchrone. Elle est invoquée dans \texttt{on\_alert\_response} pour clore proprement le cycle de vie du dialogue.
+    \item \textbf{\texttt{gtk\_alert\_dialog\_show()}} : Affiche le dialogue à l'écran sans mettre en place de mécanisme de capture de la réponse. Le module y a recours pour les simples alertes informatives où seule la fermeture manuelle par l'utilisateur compte.
+\end{itemize}
 
 \newpage

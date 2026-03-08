@@ -101,24 +101,13 @@ GtkWidget *create_window(GtkApplication *app, const window_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_application\_window\_new()} & Crée une fenêtre associée à une instance de \texttt{GtkApplication}. \\
-\hline
-\texttt{gtk\_widget\_set\_name()} & Attribue un identifiant CSS au widget pour cibler une seule fenêtre. \\
-\hline
-\texttt{gtk\_css\_provider\_new()} & Prépare un fournisseur de style CSS chargé dynamiquement. \\
-\hline
-\texttt{gtk\_style\_context\_add\_provider\_for\_display()} & Enregistre le style CSS au niveau de l'affichage. \\
-\hline
-\texttt{gtk\_window\_set\_default\_size()} & Définit la taille initiale de la fenêtre. \\
-\hline
-\texttt{gtk\_window\_present()} & Affiche la fenêtre et demande le focus. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_application\_window\_new()}} : Crée une fenêtre principale intégrée au cycle de vie d'une \texttt{GtkApplication}. Le module l'utilise pour bénéficier de la gestion automatique des actions et de la fermeture de l'application.
+    \item \textbf{\texttt{gtk\_widget\_set\_name()}} : Assigne un identifiant unique (ID) au widget, utilisable comme sélecteur dans une feuille de style CSS. Le wrapper s'en sert pour cibler spécifiquement la fenêtre lors de l'application dynamique de thèmes personnalisés.
+    \item \textbf{\texttt{gtk\_css\_provider\_new()}} : Instancie un objet capable de lire et d'analyser des données CSS. Elle permet au module de transformer les paramètres de couleur et d'image de fond du wrapper en règles de style compréhensibles par le moteur de rendu de GTK.
+    \item \textbf{\texttt{gtk\_style\_context\_add\_provider\_for\_display()}} : Attache un fournisseur de style à l'ensemble de l'écran (display). Cette API est cruciale pour que les styles générés dynamiquement par le wrapper soient pris en compte par le moteur CSS de GTK lors du rendu de la fenêtre.
+    \item \textbf{\texttt{gtk\_window\_set\_default\_size()}} : Détermine les dimensions d'ouverture par défaut de la fenêtre. Elle est utilisée pour initialiser l'espace de travail de l'utilisateur selon les préconisations fournies dans la configuration.
+    \item \textbf{\texttt{gtk\_window\_present()}} : Rend la fenêtre visible et demande au gestionnaire de fenêtres de lui donner le focus. Le wrapper l'appelle systématiquement en fin de création pour garantir que l'utilisateur voit immédiatement l'interface générée.
+\end{itemize}
 
 \newpage

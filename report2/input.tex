@@ -87,24 +87,13 @@ GtkWidget *create_spin_button(const spin_button_config *config) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_entry\_set\_placeholder\_text()} & Définit le texte d'indication d'un champ vide. \\
-\hline
-\texttt{gtk\_entry\_set\_input\_purpose()} & Informe GTK du type de saisie attendu. \\
-\hline
-\texttt{gtk\_drop\_down\_new\_from\_strings()} & Construit une liste de choix depuis un tableau de chaînes. \\
-\hline
-\texttt{gtk\_drop\_down\_set\_enable\_search()} & Active la recherche intégrée du widget déroulant. \\
-\hline
-\texttt{gtk\_adjustment\_new()} & Définit l'intervalle numérique et les pas du contrôle. \\
-\hline
-\texttt{gtk\_spin\_button\_new()} & Crée le widget de saisie numérique associé à un ajustement. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_entry\_set\_placeholder\_text()}} : Affiche un message d'incitation à l'intérieur du champ de saisie tant que celui-ci est vide. Le module l'utilise pour fournir des indications contextuelles à l'utilisateur sans encombrer l'interface avec des labels externes.
+    \item \textbf{\texttt{gtk\_entry\_set\_input\_purpose()}} : Indique la nature des données attendues (URL, email, chiffres, etc.) pour optimiser le comportement des méthodes de saisie, comme le clavier virtuel sur mobile. Le wrapper l'utilise pour améliorer l'ergonomie des formulaires.
+    \item \textbf{\texttt{gtk\_drop\_down\_new\_from\_strings()}} : Construit une liste déroulante moderne en utilisant un tableau de chaînes de caractères pour les options. Cette API simplifie grandement la création de menus de sélection dans le module par rapport aux anciens widgets GTK.
+    \item \textbf{\texttt{gtk\_drop\_down\_set\_enable\_search()}} : Permet d'intégrer une barre de filtrage rapide à l'intérieur du menu déroulant. Le wrapper active cette fonctionnalité pour faciliter la sélection lorsque le nombre d'options devient important.
+    \item \textbf{\texttt{gtk\_adjustment\_new()}} : Définit un modèle de données numérique spécifiant une valeur courante, des bornes minimale et maximale, ainsi que des pas de progression. Elle constitue la fondation logique du widget \texttt{GtkSpinButton} créé par le module.
+    \item \textbf{\texttt{gtk\_spin\_button\_new()}} : Crée le widget de contrôle numérique lié à un ajustement. Elle permet à l'utilisateur de saisir ou d'incrémenter précisément une valeur numérique dans les limites définies par le wrapper.
+\end{itemize}
 
 \newpage

@@ -84,24 +84,13 @@ void stack_add_page(GtkWidget *stack, GtkWidget *child, const char *name, const 
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_grid\_new()} & Crée un conteneur en grille. \\
-\hline
-\texttt{gtk\_box\_new()} & Crée un conteneur linéaire horizontal ou vertical. \\
-\hline
-\texttt{gtk\_stack\_new()} & Crée un conteneur à pages multiples. \\
-\hline
-\texttt{gtk\_stack\_sidebar\_new()} & Crée le widget de navigation latérale lié à une pile. \\
-\hline
-\texttt{gtk\_stack\_add\_named()} & Ajoute une page identifiée dans la pile. \\
-\hline
-\texttt{g\_object\_set()} & Attribue le titre de page utilisé par les widgets de navigation. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_grid\_new()}} : Instancie un conteneur en grille à deux dimensions permettant d'organiser les widgets selon des lignes et des colonnes. Elle est le point de départ de la fonction \texttt{create\_grid}, qui configure ensuite l'espacement et l'homogénéité.
+    \item \textbf{\texttt{gtk\_box\_new()}} : Crée un conteneur linéaire simple qui dispose ses widgets enfants selon une orientation donnée. Le module l'utilise dans \texttt{create\_box} pour simplifier la mise en place de flux horizontaux ou verticaux.
+    \item \textbf{\texttt{gtk\_stack\_new()}} : Prépare un conteneur multicouche affichant un seul widget à la fois parmi plusieurs pages. Cette API est au cœur de \texttt{create\_stack}, facilitant la gestion des transitions et de l'homogénéité des dimensions des pages.
+    \item \textbf{\texttt{gtk\_stack\_sidebar\_new()}} : Génère une barre latérale de navigation compatible avec le widget \texttt{GtkStack}. Elle est utilisée par le helper correspondant pour fournir un moyen intuitif de changer de page dans une interface à onglets.
+    \item \textbf{\texttt{gtk\_stack\_add\_named()}} : Insère un widget dans une pile en lui assignant un nom symbolique unique. Le wrapper l'utilise dans \texttt{stack\_add\_page} pour permettre un référencement aisé de chaque vue de l'application.
+    \item \textbf{\texttt{g\_object\_set()}} : Modifie les propriétés d'un objet via une interface générique à base de chaînes de caractères. Dans le module, elle sert spécifiquement à définir le titre visible d'une page de pile, propriété portée par l'objet \texttt{GtkStackPage} interne à GTK.
+\end{itemize}
 
 \newpage

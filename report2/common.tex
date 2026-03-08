@@ -57,24 +57,13 @@ void apply_widget_style(GtkWidget *widget, const widget_style_config *style) {
 
 \subsection{APIs GTK utilisées}
 
-\begin{center}
-\begin{tabular}{|l|p{8cm}|}
-\hline
-\textbf{API} & \textbf{Rôle} \\
-\hline
-\texttt{gtk\_widget\_add\_css\_class()} & Ajoute une ou plusieurs classes CSS à un widget. \\
-\hline
-\texttt{gtk\_widget\_set\_size\_request()} & Fixe une taille minimale souhaitée. \\
-\hline
-\texttt{gtk\_widget\_set\_margin\_top()} et variantes & Applique les marges externes du widget. \\
-\hline
-\texttt{gtk\_widget\_set\_halign()} et \texttt{gtk\_widget\_set\_valign()} & Positionne le widget dans l'espace disponible. \\
-\hline
-\texttt{gtk\_widget\_set\_hexpand()} et \texttt{gtk\_widget\_set\_vexpand()} & Indique si le widget peut occuper l'espace libre du conteneur. \\
-\hline
-\texttt{gtk\_widget\_set\_tooltip\_text()} & Définit le texte affiché au survol. \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{\texttt{gtk\_widget\_add\_css\_class()}} : Ajoute une classe de style CSS spécifiée au widget cible. Dans \texttt{apply\_widget\_style}, elle permet d'appliquer de manière dynamique une ou plusieurs classes CSS définies dans la configuration pour modifier l'apparence visuelle du widget.
+    \item \textbf{\texttt{gtk\_widget\_set\_size\_request()}} : Fixe les dimensions minimales (largeur et hauteur) que le widget doit tenter d'occuper. Le wrapper utilise cette fonction pour forcer une taille spécifique demandée par le développeur dans la structure \texttt{widget\_style\_config}.
+    \item \textbf{\texttt{gtk\_widget\_set\_margin\_top()}} (et variantes) : Définit les marges extérieures du widget pour chaque direction. Le module les exploite pour assurer un espacement cohérent entre les widgets sans avoir à manipuler directement les conteneurs parents.
+    \item \textbf{\texttt{gtk\_widget\_set\_halign()}} et \textbf{\texttt{gtk\_widget\_set\_valign()}} : Contrôlent l'alignement du widget respectivement sur les axes horizontal et vertical. Elles permettent au wrapper de gérer la position du widget (centré, aligné à gauche/droite, ou étendu) dans sa zone d'affichage.
+    \item \textbf{\texttt{gtk\_widget\_set\_hexpand()}} et \textbf{\texttt{gtk\_widget\_set\_vexpand()}} : Indiquent au gestionnaire de mise en page si le widget doit absorber l'espace supplémentaire disponible. Ces appels sont cruciaux pour définir le comportement de redimensionnement réactif des interfaces construites avec le wrapper.
+    \item \textbf{\texttt{gtk\_widget\_set\_tooltip\_text()}} : Associe un texte d'aide contextuelle qui apparaît lorsque l'utilisateur survole le widget avec la souris. Elle est systématiquement appelée par le module si une chaîne de caractères \texttt{tooltip} est fournie.
+\end{itemize}
 
 \newpage
