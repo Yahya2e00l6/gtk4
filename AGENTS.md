@@ -231,32 +231,40 @@ Do not commit unless the user explicitly asks.
 
 ## Academic Report (LaTeX)
 
-The academic report documents the config structs in French. Located in `report/`.
+The project includes two technical reports documented in French.
+
+### Report Structure
+1. **Report 1 (`report/`)**: Focuses on the **Interface and Architecture**. It documents the `config` structs, field descriptions, and how to use the API.
+2. **Report 2 (`report2/`)**: Focuses on the **Implementation**. It documents the internal logic, key functions, and the specific GTK4/GLib APIs called.
 
 ### Build Commands
 
-- Build PDF: `make -C report`
-- Output: `report/build/main.pdf`
+- Build Report 1: `make -C report`
+- Build Report 2: `make -C report2`
+- Output PDFs: `report/build/main.pdf` and `report2/build/main.pdf`
 
-### Adding New Widgets
+### Adding New Documentation
 
 To add documentation for a new widget (e.g., `input`):
 
-1. Read the header: `include/widgets/input.h`
+1. **For Report 1 (Interface - `report/input.tex`)**:
+   - Focus on readability and usage.
+   - **Definition**: The C struct configuration code from the header.
+   - **Description des champs**: A detailed table explaining every field in the config struct.
+   - **Exemple d'utilisation**: A practical code example showing how to use the widget.
 
-2. Create `report/input.tex` with sections:
-   - Definition (struct code)
-   - Description des champs (table + descriptions)
-   - Exemple d'utilisation (code example)
+2. **For Report 2 (Implementation - `report2/input.tex`)**:
+   - Focus on internal logic and GTK mechanics.
+   - **Introduction**: Brief purpose of the widget.
+   - **Implémentation**: Key internal functions and logic (snippets from the `.c` file).
+   - **APIs GTK utilisées**: A table mapping wrapper functions to the underlying GTK4/GLib APIs.
 
-3. Add to `report/main.tex`:
-   ```
+3. Update the corresponding `main.tex` in both directories:
+   ```latex
    \input{input}
    ```
 
-4. Build: `make -C report`
-
-
+4. Rebuild both reports to verify formatting.
 
 ---
 
