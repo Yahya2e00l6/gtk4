@@ -194,7 +194,7 @@ void demo_app_start(GtkApplication *app, gpointer user_data) {
                              .title = "GTK UI Wrapper Showcasea",
                               .icon_name = "applications-development-symbolic",
                               .widget_name = "wrapper-window",
-                              .background_image_path = "image.png",
+                              .background_image_path = "image1.png",
                              .default_width = 700,
                              .default_height = 300,
                              .min_width = 400,

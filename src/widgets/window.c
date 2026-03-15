@@ -21,27 +21,31 @@ static void apply_window_background(const window_config *config, GtkWidget *wind
     char *css;
 
     if (has_image && has_color) {
+        char *path = g_canonicalize_filename(config->background_image_path, NULL);
         css = g_strdup_printf(
             "window#%s, window#%s > * {"
             "background-color: %s;"
-            "background-image: url('%s');"
+            "background-image: url('file://%s');"
             "background-size: cover;"
             "background-position: center;"
             "}",
             name, name,
             config->background_color,
-            config->background_image_path
+            path
         );
+        g_free(path);
     } else if (has_image) {
+        char *path = g_canonicalize_filename(config->background_image_path, NULL);
         css = g_strdup_printf(
             "window#%s, window#%s > * {"
-            "background-image: url('%s');"
+            "background-image: url('file://%s');"
             "background-size: cover;"
             "background-position: center;"
             "}",
             name, name,
-            config->background_image_path
+            path
         );
+        g_free(path);
     } else {
         css = g_strdup_printf(
             "window#%s, window#%s > * { background-color: %s; }",

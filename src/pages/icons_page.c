@@ -33,7 +33,7 @@ GtkWidget *make_icons_page(showcase_state *state) {
 
   GtkWidget *icon_row = create_box(&(box_config){
       .orientation = GTK_ORIENTATION_HORIZONTAL,
-      .spacing = 16,
+      .spacing = 16*4,
       .homogeneous = false,
       .style = {.halign = GTK_ALIGN_CENTER, .set_halign = true},
   });
@@ -41,7 +41,7 @@ GtkWidget *make_icons_page(showcase_state *state) {
       .icon_name = "dialog-information-symbolic", .pixel_size = 32,
       .style = {.tooltip = "Information"}}), 0, 0, 0, 0);
   container_add(icon_row, create_image(&(image_config){
-      .icon_name = "dialog-warning-symbolic", .pixel_size = 32,
+  .icon_name = "dialog-warning-symbolic", .pixel_size = 32,
       .style = {.tooltip = "Warning"}}), 0, 0, 0, 0);
   container_add(icon_row, create_image(&(image_config){
       .icon_name = "dialog-error-symbolic", .pixel_size = 32,
@@ -56,6 +56,12 @@ GtkWidget *make_icons_page(showcase_state *state) {
       .icon_name = "weather-clear-symbolic", .pixel_size = 32,
       .style = {.tooltip = "Weather"}}), 0, 0, 0, 0);
   container_add(box, icon_row, 0, 0, 0, 0);
+
+
+ container_add(icon_row, create_image(&(image_config){
+      .file_path = "bekhoxa.png", .pixel_size = 32*10,
+      .style = {.tooltip = "Information"}}), 0, 0, 0, 0);
+
 
   container_add(box, create_separator(&(separator_config){
       .orientation = GTK_ORIENTATION_HORIZONTAL}), 0, 0, 0, 0);

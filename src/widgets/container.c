@@ -46,6 +46,8 @@ GtkWidget *create_box(const box_config *config) {
     if (config == NULL) {
         return box;
     }
+    gtk_widget_set_halign(box, config->align);
+
 
     gtk_box_set_homogeneous(GTK_BOX(box), config->homogeneous);
     apply_widget_style(box, &config->style);

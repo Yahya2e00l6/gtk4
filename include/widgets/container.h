@@ -46,6 +46,7 @@ typedef struct
     int spacing;
     bool homogeneous;
     widget_style_config style;
+    GtkAlign align;
 } box_config;
 
 typedef struct
