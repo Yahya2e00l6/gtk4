@@ -13,6 +13,17 @@ make clean  # Clean build
 - **Run**: `make run` or run via `./build/gtk-app`
 - **Debug**: Press F5 or use Run menu > start debugging
 
+## XML Demo
+
+- Build and run default XML: `make xml-demo`
+- Run a specific XML file: `make xml-demo XML=examples/demo_forms.xml`
+- Direct binary usage: `./build/xml-demo examples/demo_dashboard.xml`
+
+Available XML examples:
+- `examples/demo_forms.xml`
+- `examples/demo_dashboard.xml`
+- `examples/demo_gallery.xml`
+
 ## Technical Reports (LaTeX)
 
 The project includes two technical reports documented in French.

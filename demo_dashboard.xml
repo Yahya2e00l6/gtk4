@@ -1,0 +1,91 @@
+<window xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="schemas/ui-wrapper.xsd"
+        title="XML Demo - Dashboard"
+        icon-name="applications-system-symbolic"
+        widget-name="wrapper-window"
+        default-width="900"
+        default-height="520"
+        min-width="600"
+        min-height="400"
+        resizable="true"
+        decorated="true"
+        background-image="image.png">
+
+  <box orientation="vertical"
+       spacing="12"
+       style-margin-top="12"
+       style-margin-bottom="12"
+       style-margin-start="12"
+       style-margin-end="12"
+       style-hexpand="true"
+       style-vexpand="true">
+
+    <label text="Ops Dashboard"
+           style-css-class="title-2"
+           style-margin-bottom="4" />
+
+    <grid column-spacing="12"
+          row-spacing="10"
+          homogeneous-columns="true"
+          style-hexpand="true"
+          style-vexpand="true">
+
+      <box orientation="vertical"
+           spacing="6"
+           layout-col="0"
+           layout-row="0"
+           style-margin-bottom="6">
+        <label text="CPU" />
+        <progress-bar fraction="0.66" text="66%" show-text="true" style-width="220" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="6"
+           layout-col="1"
+           layout-row="0"
+           style-margin-bottom="6">
+        <label text="Memory" />
+        <progress-bar fraction="0.41" text="41%" show-text="true" style-width="220" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="6"
+           layout-col="2"
+           layout-row="0"
+           style-margin-bottom="6">
+        <label text="Network" />
+        <progress-bar fraction="0.82" text="82%" show-text="true" style-width="220" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="8"
+           layout-col="0"
+           layout-row="1"
+           style-margin-top="4">
+        <label text="Status" />
+        <spinner spinning="true" size="24" />
+        <label text="Collector running" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="8"
+           layout-col="1"
+           layout-row="1"
+           style-margin-top="4">
+        <label text="Mode" />
+        <radio-button id="mode_auto" label="Auto" is-active="true" />
+        <radio-button label="Manual" group-with="mode_auto" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="8"
+           layout-col="2"
+           layout-row="1"
+           style-margin-top="4">
+        <label text="Quick Actions" />
+        <button label="Refresh" icon-name="view-refresh-symbolic" theme-variant="primary" />
+        <button label="Restart Agent" icon-name="system-run-symbolic" theme-variant="danger" />
+      </box>
+    </grid>
+  </box>
+</window>

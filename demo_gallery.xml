@@ -1,0 +1,79 @@
+<window xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="schemas/ui-wrapper.xsd"
+        title="XML Demo - Gallery"
+        icon-name="folder-pictures-symbolic"
+        widget-name="wrapper-window"
+        default-width="860"
+        default-height="520"
+        min-width="620"
+        min-height="420"
+        resizable="true"
+        decorated="true">
+
+  <box orientation="vertical"
+       spacing="12"
+       style-margin-top="14"
+       style-margin-bottom="14"
+       style-margin-start="14"
+       style-margin-end="14"
+       style-hexpand="true"
+       style-vexpand="true">
+
+    <label text="Media Gallery"
+           style-css-class="title-2"
+           style-margin-bottom="2" />
+    <label text="Icons, file image, filters and controls in one XML layout." />
+
+    <grid column-spacing="16"
+          row-spacing="12"
+          style-hexpand="true"
+          style-vexpand="true">
+
+      <box orientation="vertical"
+           spacing="6"
+           layout-col="0"
+           layout-row="0">
+        <label text="Icon Preview" />
+        <image icon-name="applications-multimedia-symbolic" pixel-size="64" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="6"
+           layout-col="1"
+           layout-row="0">
+        <label text="File Image Preview" />
+        <image file-path="image.png" pixel-size="180" keep-aspect="true" />
+      </box>
+
+      <box orientation="vertical"
+           spacing="8"
+           layout-col="2"
+           layout-row="0">
+        <label text="Filters" />
+        <dropdown options="All,Design,Code,Docs,Media"
+                  enable-search="true"
+                  style-width="180" />
+        <entry placeholder="Search assets..." style-width="180" />
+        <checkbox label="Favorites only" />
+      </box>
+
+      <separator orientation="horizontal"
+                 layout-col="0"
+                 layout-row="1"
+                 layout-colspan="3"
+                 style-margin-top="4"
+                 style-margin-bottom="4" />
+
+      <box orientation="horizontal"
+           spacing="10"
+           layout-col="0"
+           layout-row="2"
+           layout-colspan="3"
+           style-halign="center">
+        <button label="Previous" icon-name="go-previous-symbolic" />
+        <button label="Play" icon-name="media-playback-start-symbolic" theme-variant="success" />
+        <button label="Next" icon-name="go-next-symbolic" />
+      </box>
+    </grid>
+  </box>
+</window>

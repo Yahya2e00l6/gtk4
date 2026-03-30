@@ -1,0 +1,86 @@
+<window xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="schemas/ui-wrapper.xsd"
+        title="XML Demo - Forms"
+        icon-name="applications-development-symbolic"
+        widget-name="wrapper-window"
+        default-width="760"
+        default-height="460"
+        min-width="520"
+        min-height="360"
+        resizable="true"
+        decorated="true">
+
+  <box orientation="vertical"
+       spacing="10"
+       style-margin-top="14"
+       style-margin-bottom="14"
+       style-margin-start="14"
+       style-margin-end="14"
+       style-hexpand="true"
+       style-vexpand="true">
+
+    <label text="Registration Form"
+           style-css-class="title-2"
+           style-margin-bottom="8" />
+
+    <grid column-spacing="12"
+          row-spacing="10"
+          style-hexpand="true">
+      <label text="Full name" layout-col="0" layout-row="0" />
+      <entry placeholder="Jane Doe"
+             layout-col="1"
+             layout-row="0"
+             style-hexpand="true" />
+
+      <label text="Email" layout-col="0" layout-row="1" />
+      <entry placeholder="jane@example.com"
+             layout-col="1"
+             layout-row="1"
+             style-hexpand="true" />
+
+      <label text="Role" layout-col="0" layout-row="2" />
+      <dropdown options="Admin,Teacher,Student,Guest"
+                enable-search="true"
+                layout-col="1"
+                layout-row="2"
+                style-hexpand="true" />
+
+      <label text="Age" layout-col="0" layout-row="3" />
+      <spin-button min="16"
+                   max="90"
+                   step="1"
+                   value="24"
+                   digits="0"
+                   numeric-only="true"
+                   layout-col="1"
+                   layout-row="3"
+                   style-width="160" />
+
+      <checkbox label="Receive updates"
+                active="true"
+                layout-col="1"
+                layout-row="4" />
+
+      <switch label="Enable 2FA"
+              active="false"
+              state="false"
+              layout-col="1"
+              layout-row="5" />
+    </grid>
+
+    <separator orientation="horizontal"
+               style-margin-top="8"
+               style-margin-bottom="4" />
+
+    <box orientation="horizontal" spacing="8" style-halign="end">
+      <button label="Cancel"
+              theme-variant="flat"
+              has-frame="false"
+              style-width="120" />
+      <button label="Submit"
+              icon-name="emblem-ok-symbolic"
+              theme-variant="primary"
+              style-width="140" />
+    </box>
+  </box>
+</window>

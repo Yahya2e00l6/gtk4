@@ -34,6 +34,7 @@ DEP = $(OBJ:.o=.d)
 
 # XML demo target
 XML_TARGET = $(BUILD_DIR)/xml-demo
+XML ?= demo_app.xml
 XML_SRC = xml_demo_main.c \
 	src/widgets/xml_parser.c \
 	src/widgets/common.c \
@@ -76,7 +77,7 @@ run: $(TARGET)
 	$(TARGET)
 
 xml-demo: $(XML_TARGET)
-	$(XML_TARGET)
+	$(XML_TARGET) $(XML)
 
 .PHONY: all clean debug run xml-demo
 

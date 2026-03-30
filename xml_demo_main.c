@@ -7,6 +7,8 @@
 #include <gtk/gtk.h>
 #include <string.h>
 
+static const char *g_xml_demo_file = "demo_app.xml";
+
 static void xml_demo_activate(GtkApplication *app, gpointer user_data) {
     (void)user_data;
 
@@ -47,9 +49,9 @@ static void xml_demo_activate(GtkApplication *app, gpointer user_data) {
         .callback_count = G_N_ELEMENTS(callbacks),
     };
 
-    GtkWidget *window = xml_parse_file("demo_app.xml", &ctx);
+    GtkWidget *window = xml_parse_file(g_xml_demo_file, &ctx);
     if (!window) {
-        g_warning("Failed to parse demo_app.xml");
+        g_warning("Failed to parse %s", g_xml_demo_file);
         return;
     }
 
@@ -67,10 +69,16 @@ static void xml_demo_activate(GtkApplication *app, gpointer user_data) {
 }
 
 int main(int argc, char **argv) {
+    if (argc > 1 && argv[1] && argv[1][0] != '\0') {
+        g_xml_demo_file = argv[1];
+    }
+
+    char *app_argv[] = { argv[0], NULL };
+
     GtkApplication *app =
         gtk_application_new("org.gtk.xmldemo", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(app, "activate", G_CALLBACK(xml_demo_activate), NULL);
-    int status = g_application_run(G_APPLICATION(app), argc, argv);
+    int status = g_application_run(G_APPLICATION(app), 1, app_argv);
     g_object_unref(app);
     return status;
 }
