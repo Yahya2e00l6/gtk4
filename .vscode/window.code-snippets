@@ -1,15 +1,97 @@
 {
-	
 	"UI Window Wrapper": {
     "scope": "xml",
     "prefix": "win",
     "body": [
       "<window xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
-      "        xsi:noNamespaceSchemaLocation=\"schemas/ui-wrapper.xsd\"  title=\"${1:Window Title}\" width=\"${2:800}\" height=\"${3:600}\" resizable=\"true\" draggable=\"true\" closeable=\"true\" minimizable=\"true\" maximizable=\"true\">",
+      "        xsi:noNamespaceSchemaLocation=\"schemas/ui-wrapper.xsd\" title=\"${1:Window Title}\" default-width=\"${2:800}\" default-height=\"${3:600}\" resizable=\"true\" decorated=\"true\" modal=\"false\" maximized=\"false\">",
       "    $0",
       "</window>"
     ],
     "description": "Generates the root window element for the UI wrapper"
+  },
+
+	"UI Box": {
+    "scope": "xml",
+    "prefix": "box",
+    "body": [
+      "<box orientation=\"${1:vertical}\" spacing=\"${2:8}\" homogeneous=\"${3:false}\" align=\"${4:fill}\">",
+      "    $0",
+      "</box>"
+    ],
+    "description": "Generates a box container"
+  },
+
+	"UI Button": {
+    "scope": "xml",
+    "prefix": "btn",
+    "body": [
+      "<button label=\"${1:Click Me}\" icon-name=\"${2:}\" theme-variant=\"${3:primary}\" use-underline=\"${4:false}\" has-frame=\"${5:true}\" can-shrink=\"${6:false}\" on-clicked=\"${7:on_button_clicked}\"/>"
+    ],
+    "description": "Generates a button element"
+  },
+
+	"UI Menubar": {
+    "scope": "xml",
+    "prefix": "menubar",
+    "body": [
+      "<menubar layout=\"${1:horizontal}\" show-arrow-indicators=\"${2:true}\">",
+      "    <menu-section label=\"${3:File}\">",
+      "        <menu-item label=\"${4:Open}\" enabled=\"true\" on-activate=\"${5:on_menu_open}\"/>",
+      "        <menu-item label=\"${6:Quit}\" enabled=\"true\" on-activate=\"${7:on_menu_quit}\"/>",
+      "    </menu-section>",
+      "    $0",
+      "</menubar>"
+    ],
+    "description": "Generates a menubar with a starter section"
+  },
+
+	"UI Menu Section": {
+    "scope": "xml",
+    "prefix": "msection",
+    "body": [
+      "<menu-section label=\"${1:Section}\">",
+      "    <menu-item label=\"${2:Item}\" enabled=\"true\" on-activate=\"${3:on_menu_item}\"/>",
+      "    $0",
+      "</menu-section>"
+    ],
+    "description": "Generates a menu section"
+  },
+
+	"UI Menu Item": {
+    "scope": "xml",
+    "prefix": "mitem",
+    "body": [
+      "<menu-item label=\"${1:Item}\" enabled=\"${2:true}\" on-activate=\"${3:on_menu_item}\"/>"
+    ],
+    "description": "Generates a single menu item"
+  },
+
+	"UI Label": {
+    "scope": "xml",
+    "prefix": "label",
+    "body": [
+      "<label text=\"${1:Label text}\" selectable=\"${2:false}\" wrap=\"${3:false}\"/>"
+    ],
+    "description": "Generates a label"
+  },
+
+	"UI Entry": {
+    "scope": "xml",
+    "prefix": "entry",
+    "body": [
+      "<entry placeholder=\"${1:Type here}\" default-text=\"${2:}\" password=\"${3:false}\" editable=\"${4:true}\" on-changed=\"${5:on_entry_changed}\"/>"
+    ],
+    "description": "Generates an entry input"
+  },
+
+	"UI Separator": {
+    "scope": "xml",
+    "prefix": "sep",
+    "body": [
+      "<separator orientation=\"${1:horizontal}\"/>"
+    ],
+    "description": "Generates a separator"
   }
   ,"GTK Window Wrapper": {
     "prefix": "gtkwin",
